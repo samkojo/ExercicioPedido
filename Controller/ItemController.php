@@ -1,9 +1,10 @@
 <?php
-require("./Model/item.php");
+require("./Model/Item.php");
 
 class ItemController{
     public function getItens($pedido_id){
-      $controller = new Item();
-      return $controller->getItemByPedido($pedido_id);
+      $item_model = new ItemModel();
+      $itens = $item_model->getItemByPedido($pedido_id);
+      return json_encode($itens);
     }
 }
