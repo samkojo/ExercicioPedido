@@ -1,10 +1,11 @@
 <?php
+require('./Entities/Pedido.php');
 
 class PedidoModel {
 
   function getAllPedidos(){
-    $sql = "SELECT * FROM pedido";
-    
+    $pedido = new Pedido();
+    return $pedido->select();
   }
 
 }
