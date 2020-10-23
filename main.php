@@ -22,5 +22,5 @@ foreach(json_decode($itens, true) as $item) {
   echo "ID:" .$item['idItem']. "\n";
   echo "Produto:" .$item['idProduto']. "\n";
   echo "Quantidade:" .$item['quantidade']. "\n";
-  echo "Valor Unitário:" .$item['valor_unitario']. "\n\n";
+  echo "Valor Unitário:" .$item['valorUnitario']. "\n\n";
 }

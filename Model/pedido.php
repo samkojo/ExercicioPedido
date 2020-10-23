@@ -4,8 +4,12 @@ require('./Entities/Pedido.php');
 class PedidoModel {
 
   function getAllPedidos(){
-    $pedido = new Pedido();
-    return $pedido->select();
-  }
+    $pedidos = array();
 
+    array_push($pedidos, new Pedido(1, 1, '2020-09-14', 20.89));
+
+    array_push($pedidos, new Pedido(2, 3, '2020-09-15', 50.45));
+
+    return $pedidos;
+  }
 }
