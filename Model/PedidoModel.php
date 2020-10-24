@@ -1,5 +1,7 @@
 <?php
-require('./Entities/Pedido.php');
+namespace Model;
+
+use Entities\Pedido;
 
 class PedidoModel {
 

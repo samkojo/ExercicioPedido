@@ -1,8 +1,13 @@
 <?php
-require("./Controller/PedidoController.php");
-require("./Controller/ItemController.php");
+// require("./Controller/PedidoController.php");
+// require("./Controller/ItemController.php");
+// require("./Repository/DBPedidoRepository.php");
+require_once 'autoload.php';
 
-$pedido_controller = new PedidoController();
+use Controller\PedidoController;
+use Repository\DBPedidoRepository;
+
+$pedido_controller = new PedidoController(new DBPedidoRepository());
 $pedido = $pedido_controller->getPedido();
 
 foreach(json_decode($pedido, true) as $data) {
@@ -11,16 +16,16 @@ foreach(json_decode($pedido, true) as $data) {
   echo "Total:" .$data['total']. "\n\n";
 }
 
-echo ("-------------------------------------------\n\n");
+// echo ("-------------------------------------------\n\n");
 
-$item_controller = new ItemController();
-$itens = $item_controller->getItens(1);
+// $item_controller = new ItemController();
+// $itens = $item_controller->getItens(1);
 
-echo "Lista Itens: Pedido 1\n\n";
+// echo "Lista Itens: Pedido 1\n\n";
 
-foreach(json_decode($itens, true) as $item) {
-  echo "ID:" .$item['idItem']. "\n";
-  echo "Produto:" .$item['idProduto']. "\n";
-  echo "Quantidade:" .$item['quantidade']. "\n";
-  echo "Valor Unitário:" .$item['valorUnitario']. "\n\n";
-}
+// foreach(json_decode($itens, true) as $item) {
+//   echo "ID:" .$item['idItem']. "\n";
+//   echo "Produto:" .$item['idProduto']. "\n";
+//   echo "Quantidade:" .$item['quantidade']. "\n";
+//   echo "Valor Unitário:" .$item['valorUnitario']. "\n\n";
+// }

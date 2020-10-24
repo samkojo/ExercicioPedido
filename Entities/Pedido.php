@@ -1,4 +1,6 @@
 <?php
+namespace Entities;
+
 class Pedido {
   public $idPedido;
   public $idCliente;

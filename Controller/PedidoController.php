@@ -1,11 +1,18 @@
 <?php
-require("./Model/pedido.php");
+
+namespace Controller;
+use Repository\PedidoRepository;
 
 class PedidoController{
 
+  private $pedidoRepository;
+
+  function __construct(PedidoRepository $pedidoRepository){
+    $this->pedidoRepository = $pedidoRepository;
+  }
+
     public function getPedido(){
-      $pedido_model = new PedidoModel();
-      $result_pedido = $pedido_model->getAllPedidos();
+      $result_pedido = $this->pedidoRepository->getAll();
 
       foreach($result_pedido as $pedido) {
         $result[] = array(
