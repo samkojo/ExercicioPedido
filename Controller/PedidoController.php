@@ -2,6 +2,7 @@
 
 namespace Controller;
 use Repository\PedidoRepository;
+use Exceptions\PedidoException;
 
 class PedidoController{
 
@@ -12,17 +13,23 @@ class PedidoController{
   }
 
     public function getPedido(){
-      $result_pedido = $this->pedidoRepository->getAll();
 
-      foreach($result_pedido as $pedido) {
-        $result[] = array(
-          "idPedido"  => $pedido->idPedido,
-          "idCliente" => $pedido->idCliente,
-          "data"      => date("d/m/Y", strtotime($pedido->data)),
-          "total"     => $pedido->total
-        );
+      try {
+        $result_pedido = $this->pedidoRepository->getAll();
+
+        foreach($result_pedido as $pedido) {
+          $result[] = array(
+            "idPedido"  => $pedido->idPedido,
+            "idCliente" => $pedido->idCliente,
+            "data"      => date("d/m/Y", strtotime($pedido->data)),
+            "total"     => $pedido->total
+          );
+        }
+
+        return $result;
+      } catch (PedidoException $error) {
+        echo("[LOG]: " . $error->getMessage(). "\n");
+        return $error->getMessage();
       }
-
-      return json_encode($result);
     }
 }

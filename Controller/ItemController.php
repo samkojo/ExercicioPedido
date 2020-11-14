@@ -1,5 +1,7 @@
 <?php
-require("./Model/Item.php");
+namespace Controller;
+use Model\Item;
+//require("./Model/Item.php");
 
 class ItemController{
     public function getItens($pedido_id){

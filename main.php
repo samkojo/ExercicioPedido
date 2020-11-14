@@ -10,10 +10,14 @@ use Repository\DBPedidoRepository;
 $pedido_controller = new PedidoController(new DBPedidoRepository());
 $pedido = $pedido_controller->getPedido();
 
-foreach(json_decode($pedido, true) as $data) {
-  echo "id:" .$data['idPedido']. "\n";
-  echo "Data:" .$data['data']. "\n";
-  echo "Total:" .$data['total']. "\n\n";
+if(is_array($pedido)) {
+  foreach($pedido as $data) {
+    echo "id:" .$data['idPedido']. "\n";
+    echo "Data:" .$data['data']. "\n";
+    echo "Total:" .$data['total']. "\n\n";
+  }
+} else{
+  echo($pedido);
 }
 
 // echo ("-------------------------------------------\n\n");

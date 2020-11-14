@@ -1,5 +1,8 @@
 <?php
-require('./Entities/Item.php');
+//require('./Entities/Item.php');
+namespace Model;
+
+use Entities\Item;
 
 class ItemModel {
   function getItemByPedido($id_pedido){
